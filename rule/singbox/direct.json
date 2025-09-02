@@ -1,0 +1,16 @@
+{
+    "version": 2,
+    "rules": [
+        {
+            "domain": [
+                "steamcdn-a.akamaihd.net","www.themoviedb.org"
+            ],
+            "domain_suffix": [
+                "*.cm.steampowered.com",
+                "*.steamserver.net",
+                "*.themoviedb.org"
+            ],
+            "domain_keyword": []
+        }
+    ]
+}

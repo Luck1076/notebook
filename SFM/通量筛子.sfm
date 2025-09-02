@@ -1,0 +1,15 @@
+name "通量筛子"
+every tick do
+input fe:: from nengliang top side
+output fe:: to shaizi top side
+end
+
+every ticks do
+input from shuru  each side
+output 16 each to shaizi each side
+end
+
+every 40 ticks do
+input from huancun
+output to shuchu
+end

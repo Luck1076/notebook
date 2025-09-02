@@ -1,0 +1,17 @@
+name "水培床"
+
+every ticks do
+input fe:: from "能量" west side
+output fe:: to "机器" top side
+end
+
+every 40 ticks do
+input fluid:: from "输入" east side
+output fluid:: to each "机器" top side
+end
+
+every 40 ticks do
+input  from "机器" east side
+output to "输出" top side
+end
+

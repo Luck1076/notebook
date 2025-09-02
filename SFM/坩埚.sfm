@@ -1,0 +1,20 @@
+name "坩埚"
+every tick do
+input from shuru top side
+output 64 each to ganguo top side
+end
+
+every 40 ticks do
+input fluid:: from ganguo east side
+output fluid:: to shuchu top side
+end
+
+every 40 ticks do
+input fluid:: from shuchu east side
+output fluid:: to fadianji top side
+end
+
+every 40 ticks do
+input fe:: from fadianji west side
+output fe:: to nengliang top side
+end

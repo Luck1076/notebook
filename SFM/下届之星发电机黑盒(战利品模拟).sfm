@@ -1,0 +1,30 @@
+name "下界之星发电厂"
+
+every  ticks do
+input fe:: from "能量" each side
+output fe:: to "战利品"
+output fe:: to "模拟室"
+end
+
+every 20 ticks do
+input * from "输入"
+output 10 each * to each "战利品"
+output 10 each * to each "模拟室"
+end
+
+every  ticks do
+input from "输入"
+output 5 each to each "发电机" top side
+end
+
+every 20 ticks do
+input * from "战利品"
+input * from "模拟室"
+output * to "输出"
+end
+
+every  ticks do
+input fe:: from "发电机"
+output fe:: to "能量" each side
+end
+

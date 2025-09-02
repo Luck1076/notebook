@@ -1,0 +1,11 @@
+name "岩浆发电"
+every 20 tick do
+input fluid:: from "输入" top side
+output fluid:: to each "发电机" top side
+end
+
+every tick do
+input fe:: from "发电机" top side
+output fe:: to  "能量" top side
+end
+
