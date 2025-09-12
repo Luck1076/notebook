@@ -13,26 +13,14 @@
             "server": "dns_proxy"
          },
          {
+            "outbound": "any",
+            "server": "dns_resolver"
+         },
+         {
             "rule_set": [
                "cnsite"
             ],
             "server": "dns_direct"
-         },
-         {
-            "rule_set": [
-               "site!cn",
-               "gfw",
-               "discord",
-               "youtube",
-               "googleip",
-               "googlesite",
-               "googleplay"
-            ],
-            "server": "dns_proxy"
-         },
-         {
-            "outbound": "any",
-            "server": "dns_resolver"
          }
       ],
       "servers": [
@@ -55,7 +43,7 @@
             "type": "udp"
          }
       ],
-      "strategy": "prefer_ipv4"
+      "strategy": "ipv4_only"
    },
    "experimental": {
       "clash_api": {
@@ -135,7 +123,6 @@
             "直连",
             "单选节点",
             "全部自动",
-            "lemon",
             "香港",
             "美国",
             "台湾",
@@ -217,7 +204,6 @@
          "outbounds": [
             "直连",
             "单选节点",
-            "lemon",
             "默认出站",
             "全部自动",
             "香港",
@@ -238,7 +224,6 @@
          "outbounds": [
             "直连",
             "单选节点",
-            "lemon",
             "默认出站",
             "全部自动",
             "香港",
@@ -259,7 +244,6 @@
          "outbounds": [
             "直连",
             "单选节点",
-            "lemon",
             "默认出站",
             "全部自动",
             "香港",
@@ -275,21 +259,11 @@
          "type": "selector"
       },
       {
-         "interrupt_exist_connections": true,
-         "interval": "30s",
-         "outbounds": [],
-         "tag": "lemon",
-         "tolerance": 10,
-         "type": "urltest",
-         "url": "http://www.gstatic.com/generate_204"
-      },
-      {
          "default": "香港",
          "interrupt_exist_connections": true,
          "outbounds": [
             "直连",
             "单选节点",
-            "lemon",
             "默认出站",
             "全部自动",
             "香港",
@@ -310,7 +284,6 @@
          "outbounds": [
             "直连",
             "单选节点",
-            "lemon",
             "默认出站",
             "全部自动",
             "香港",
@@ -331,7 +304,6 @@
          "outbounds": [
             "直连",
             "单选节点",
-            "lemon",
             "默认出站",
             "全部自动",
             "香港",
@@ -352,7 +324,6 @@
          "outbounds": [
             "直连",
             "单选节点",
-            "lemon",
             "默认出站",
             "全部自动",
             "香港",
@@ -621,7 +592,9 @@
                "ping0.cc",
                "vercel.com",
                "ipwho.is",
-               "speedtest.net"
+               "speedtest.net",
+               "nyaa.iss.ink",
+               "10ncydlf.flsubcn.cc"
             ],
             "outbound": "默认出站"
          },

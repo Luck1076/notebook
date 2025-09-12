@@ -3,15 +3,18 @@
       "disable_cache": true,
       "rules": [
          {
+            "action": "route",
+            "clash_mode": "Direct",
+            "server": "dns_direct"
+         },
+         {
+            "action": "route",
+            "clash_mode": "Global",
+            "server": "dns_proxy"
+         },
+         {
             "rule_set": [
-               "cnsite",
-               "netease",
-               "bilibili",
-               "wps",
-               "microsoft@cn",
-               "tencent",
-               "tencent-games@cn",
-               "xiaomi"
+               "cnsite"
             ],
             "server": "dns_direct"
          },
@@ -19,11 +22,11 @@
             "rule_set": [
                "site!cn",
                "gfw",
+               "discord",
                "youtube",
-               "telegram_site",
                "googleip",
-               "telegram_ip",
-               "netflix"
+               "googlesite",
+               "googleplay"
             ],
             "server": "dns_proxy"
          },
@@ -71,7 +74,6 @@
          ],
          "auto_redirect": true,
          "auto_route": true,
-         "domain_strategy": "prefer_ipv4",
          "interface_name": "tun0",
          "mtu": 9000,
          "sniff": true,
@@ -95,6 +97,7 @@
          "type": "block"
       },
       {
+         "default": "直连",
          "interrupt_exist_connections": true,
          "outbounds": [
             "直连",
@@ -102,6 +105,12 @@
             "CF自建"
          ],
          "tag": "漏网之鱼",
+         "type": "selector"
+      },
+      {
+         "interrupt_exist_connections": true,
+         "outbounds": [],
+         "tag": "家庭IP",
          "type": "selector"
       },
       {
@@ -126,14 +135,14 @@
             "直连",
             "单选节点",
             "全部自动",
-            "lemon",
             "香港",
             "美国",
             "台湾",
             "新加坡",
             "日本",
             "韩国",
-            "CF自建"
+            "CF自建",
+            "家庭IP"
          ],
          "tag": "默认出站",
          "type": "selector"
@@ -202,52 +211,11 @@
          "url": "http://www.gstatic.com/generate_204"
       },
       {
-         "default": "直连",
-         "interrupt_exist_connections": true,
-         "outbounds": [
-            "直连",
-            "单选节点",
-            "lemon",
-            "默认出站",
-            "全部自动",
-            "香港",
-            "美国",
-            "台湾",
-            "新加坡",
-            "日本",
-            "韩国",
-            "CF自建"
-         ],
-         "tag": "cloudflare",
-         "type": "selector"
-      },
-      {
-         "default": "香港",
-         "interrupt_exist_connections": true,
-         "outbounds": [
-            "直连",
-            "单选节点",
-            "lemon",
-            "默认出站",
-            "全部自动",
-            "香港",
-            "美国",
-            "台湾",
-            "新加坡",
-            "日本",
-            "韩国",
-            "CF自建"
-         ],
-         "tag": "netflix",
-         "type": "selector"
-      },
-      {
          "default": "默认出站",
          "interrupt_exist_connections": true,
          "outbounds": [
             "直连",
             "单选节点",
-            "lemon",
             "默认出站",
             "全部自动",
             "香港",
@@ -256,7 +224,8 @@
             "新加坡",
             "日本",
             "韩国",
-            "CF自建"
+            "CF自建",
+            "家庭IP"
          ],
          "tag": "discord",
          "type": "selector"
@@ -267,7 +236,6 @@
          "outbounds": [
             "直连",
             "单选节点",
-            "lemon",
             "默认出站",
             "全部自动",
             "香港",
@@ -276,7 +244,8 @@
             "新加坡",
             "日本",
             "韩国",
-            "CF自建"
+            "CF自建",
+            "家庭IP"
          ],
          "tag": "google",
          "type": "selector"
@@ -287,7 +256,6 @@
          "outbounds": [
             "直连",
             "单选节点",
-            "lemon",
             "默认出站",
             "全部自动",
             "香港",
@@ -296,27 +264,18 @@
             "新加坡",
             "日本",
             "韩国",
-            "CF自建"
+            "CF自建",
+            "家庭IP"
          ],
          "tag": "gamedownload",
          "type": "selector"
       },
       {
-         "interrupt_exist_connections": true,
-         "interval": "30s",
-         "outbounds": [],
-         "tag": "lemon",
-         "tolerance": 10,
-         "type": "urltest",
-         "url": "http://www.gstatic.com/generate_204"
-      },
-      {
-         "default": "默认出站",
+         "default": "香港",
          "interrupt_exist_connections": true,
          "outbounds": [
             "直连",
             "单选节点",
-            "lemon",
             "默认出站",
             "全部自动",
             "香港",
@@ -325,9 +284,10 @@
             "新加坡",
             "日本",
             "韩国",
-            "CF自建"
+            "CF自建",
+            "家庭IP"
          ],
-         "tag": "telegram",
+         "tag": "netflix",
          "type": "selector"
       },
       {
@@ -336,7 +296,6 @@
          "outbounds": [
             "直连",
             "单选节点",
-            "lemon",
             "默认出站",
             "全部自动",
             "香港",
@@ -345,7 +304,48 @@
             "新加坡",
             "日本",
             "韩国",
-            "CF自建"
+            "CF自建",
+            "家庭IP"
+         ],
+         "tag": "telegram",
+         "type": "selector"
+      },
+      {
+         "default": "直连",
+         "interrupt_exist_connections": true,
+         "outbounds": [
+            "直连",
+            "单选节点",
+            "默认出站",
+            "全部自动",
+            "香港",
+            "美国",
+            "台湾",
+            "新加坡",
+            "日本",
+            "韩国",
+            "CF自建",
+            "家庭IP"
+         ],
+         "tag": "qbdownload",
+         "type": "selector"
+      },
+      {
+         "default": "默认出站",
+         "interrupt_exist_connections": true,
+         "outbounds": [
+            "直连",
+            "单选节点",
+            "默认出站",
+            "全部自动",
+            "香港",
+            "美国",
+            "台湾",
+            "新加坡",
+            "日本",
+            "韩国",
+            "CF自建",
+            "家庭IP"
          ],
          "tag": "youtube",
          "type": "selector"
@@ -419,14 +419,6 @@
             "type": "remote",
             "update_interval": "1d",
             "url": "https://gh.luck1076.qzz.io/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/youtube.srs"
-         },
-         {
-            "download_detour": "直连",
-            "format": "binary",
-            "tag": "cloudflare",
-            "type": "remote",
-            "update_interval": "1d",
-            "url": "https://gh.luck1076.qzz.io/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/cloudflare.srs"
          },
          {
             "download_detour": "直连",
@@ -572,7 +564,7 @@
          {
             "action": "route",
             "mode": "or",
-            "outbound": "直连",
+            "outbound": "qbdownload",
             "rules": [
                {
                   "protocol": "bittorrent"
@@ -586,40 +578,9 @@
             "type": "logical"
          },
          {
-            "outbound": "block",
-            "protocol": "quic"
-         },
-         {
             "action": "route",
             "ip_is_private": true,
             "outbound": "直连"
-         },
-         {
-            "action": "route",
-            "clash_mode": "direct",
-            "outbound": "直连"
-         },
-         {
-            "action": "route",
-            "clash_mode": "global",
-            "outbound": "默认出站"
-         },
-         {
-            "domain_keyword": [
-               "cn",
-               "dl-z01a",
-               "luck1076",
-               "binance",
-               "okx"
-            ],
-            "outbound": "直连"
-         },
-         {
-            "domain_keyword": [
-               "xn--mesx3htbz31e",
-               "googleapis"
-            ],
-            "outbound": "默认出站"
          },
          {
             "domain": [
@@ -639,7 +600,6 @@
                "a4k.net",
                "firefox.com",
                "infini.money",
-               "googleapis.cn",
                "fast.com",
                "ping0.cc",
                "vercel.com",
@@ -661,7 +621,25 @@
                "1076luck.dpdns.org",
                "okx.com",
                "ipip.net",
+               "themoviedb.org",
                "tmdb.org"
+            ],
+            "outbound": "直连"
+         },
+         {
+            "domain_keyword": [
+               "xn--mesx3htbz31e",
+               "googleapis"
+            ],
+            "outbound": "默认出站"
+         },
+         {
+            "domain_keyword": [
+               "cn",
+               "dl-z01a",
+               "luck1076",
+               "binance",
+               "okx"
             ],
             "outbound": "直连"
          },
@@ -677,13 +655,6 @@
             "outbound": "netflix",
             "rule_set": [
                "netflix"
-            ]
-         },
-         {
-            "action": "route",
-            "outbound": "cloudflare",
-            "rule_set": [
-               "cloudflare"
             ]
          },
          {
@@ -729,14 +700,9 @@
             "action": "route",
             "outbound": "默认出站",
             "rule_set": [
-               "proxy"
-            ]
-         },
-         {
-            "action": "route",
-            "outbound": "默认出站",
-            "rule_set": [
-               "site!cn"
+               "proxy",
+               "site!cn",
+               "gfw"
             ]
          }
       ]

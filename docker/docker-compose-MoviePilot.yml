@@ -1,0 +1,33 @@
+services:
+  moviepilot:
+    stdin_open: true
+    tty: true
+    container_name: moviepilot-v2
+    hostname: moviepilot-v2
+    ports:
+     - '3001:3000'
+     - '3002:3001'
+    volumes:
+      - '/mnt/user/media:/media' 
+      - '/mnt/user/appdata/moviepilot-v2/config:/config' 
+      - '/mnt/user/appdata/moviepilot-v2/core:/moviepilot/.cache/ms-playwright' 
+      - '/var/run/docker.sock:/var/run/docker.sock:ro' 
+      - '/mnt/user/media/downloads/torrent/:/BT_backup' 
+    environment:
+      - 'NGINX_PORT=3000'
+      - 'PORT=3001'
+      - 'PUID=99'
+      - 'PGID=100'
+      - 'UMASK=022'
+      - 'TZ=Asia/Shanghai'
+      - 'SUPERUSER=admin'
+      - 'DB_TYPE=postgresql'
+      - 'DB_POSTGRESQL_HOST=192.168.6.150'
+      - 'DB_POSTGRESQL_PORT=5432'
+      - 'DB_POSTGRESQL_DATABASE=moviepilot'
+      - 'DB_POSTGRESQL_USERNAME=moviepilot'
+      - 'DB_POSTGRESQL_PASSWORD=pwPiesptRCzSmWrS'
+      - 'CACHE_BACKEND_TYPE=redis'
+      - 'CACHE_BACKEND_URL=redis://:redis_nQjTQK@192.168.6.150:6379'
+    restart: always
+    image: jxxghp/moviepilot-v2:latest
