@@ -43,7 +43,7 @@
             "type": "udp"
          }
       ],
-      "strategy": "ipv4_only"
+      "strategy": "prefer_ipv4"
    },
    "experimental": {
       "clash_api": {
@@ -89,8 +89,7 @@
          "interrupt_exist_connections": true,
          "outbounds": [
             "直连",
-            "默认出站",
-            "CF自建"
+            "默认出站"
          ],
          "tag": "漏网之鱼",
          "type": "selector"
@@ -129,20 +128,10 @@
             "新加坡",
             "日本",
             "韩国",
-            "CF自建",
             "家庭IP"
          ],
          "tag": "默认出站",
          "type": "selector"
-      },
-      {
-         "interrupt_exist_connections": true,
-         "interval": "30s",
-         "outbounds": [],
-         "tag": "CF自建",
-         "tolerance": 10,
-         "type": "urltest",
-         "url": "http://www.gstatic.com/generate_204"
       },
       {
          "interrupt_exist_connections": true,
@@ -212,7 +201,6 @@
             "新加坡",
             "日本",
             "韩国",
-            "CF自建",
             "家庭IP"
          ],
          "tag": "discord",
@@ -232,7 +220,6 @@
             "新加坡",
             "日本",
             "韩国",
-            "CF自建",
             "家庭IP"
          ],
          "tag": "google",
@@ -252,7 +239,6 @@
             "新加坡",
             "日本",
             "韩国",
-            "CF自建",
             "家庭IP"
          ],
          "tag": "gamedownload",
@@ -272,7 +258,6 @@
             "新加坡",
             "日本",
             "韩国",
-            "CF自建",
             "家庭IP"
          ],
          "tag": "netflix",
@@ -292,7 +277,6 @@
             "新加坡",
             "日本",
             "韩国",
-            "CF自建",
             "家庭IP"
          ],
          "tag": "telegram",
@@ -312,7 +296,6 @@
             "新加坡",
             "日本",
             "韩国",
-            "CF自建",
             "家庭IP"
          ],
          "tag": "qbdownload",
@@ -332,7 +315,6 @@
             "新加坡",
             "日本",
             "韩国",
-            "CF自建",
             "家庭IP"
          ],
          "tag": "youtube",
@@ -344,6 +326,14 @@
       "default_domain_resolver": "dns_resolver",
       "final": "漏网之鱼",
       "rule_set": [
+         {
+            "download_detour": "直连",
+            "format": "binary",
+            "tag": "cloudflare",
+            "type": "remote",
+            "update_interval": "1d",
+            "url": "https://gh.luck1076.qzz.io/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/cloudflare.srs"
+         },
          {
             "download_detour": "直连",
             "format": "binary",
@@ -683,7 +673,8 @@
             "outbound": "直连",
             "rule_set": [
                "cnip",
-               "cnsite"
+               "cnsite",
+               "cloudflare"
             ]
          },
          {

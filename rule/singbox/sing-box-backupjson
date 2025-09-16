@@ -13,26 +13,14 @@
             "server": "dns_proxy"
          },
          {
+            "outbound": "any",
+            "server": "dns_resolver"
+         },
+         {
             "rule_set": [
                "cnsite"
             ],
             "server": "dns_direct"
-         },
-         {
-            "rule_set": [
-               "site!cn",
-               "gfw",
-               "discord",
-               "youtube",
-               "googleip",
-               "googlesite",
-               "googleplay"
-            ],
-            "server": "dns_proxy"
-         },
-         {
-            "outbound": "any",
-            "server": "dns_resolver"
          }
       ],
       "servers": [
@@ -55,7 +43,7 @@
             "type": "udp"
          }
       ],
-      "strategy": "prefer_ipv4"
+      "strategy": "ipv4_only"
    },
    "experimental": {
       "clash_api": {
@@ -97,7 +85,7 @@
          "type": "block"
       },
       {
-         "default": "直连",
+         "default": "默认出站",
          "interrupt_exist_connections": true,
          "outbounds": [
             "直连",
@@ -311,7 +299,7 @@
          "type": "selector"
       },
       {
-         "default": "直连",
+         "default": "默认出站",
          "interrupt_exist_connections": true,
          "outbounds": [
             "直连",
@@ -604,7 +592,9 @@
                "ping0.cc",
                "vercel.com",
                "ipwho.is",
-               "speedtest.net"
+               "speedtest.net",
+               "nyaa.iss.ink",
+               "10ncydlf.flsubcn.cc"
             ],
             "outbound": "默认出站"
          },
